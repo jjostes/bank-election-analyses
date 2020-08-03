@@ -2,7 +2,7 @@ import os
 import csv
 from decimal import *
 
-with open('../budget_data.csv') as budget_csv:
+with open('Resources/budget_data.csv') as budget_csv:
     csvreader = csv.reader(budget_csv, delimiter = ',')
 
     next(csvreader)

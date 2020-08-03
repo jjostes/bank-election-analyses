@@ -1,7 +1,7 @@
 import os
 import csv
 
-with open('election_data.csv') as election_csv:
+with open('Resources/election_data.csv') as election_csv:
     csvreader = csv.reader(election_csv, delimiter = ',')
 
     votes_each = {}
