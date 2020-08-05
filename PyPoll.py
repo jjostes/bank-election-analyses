@@ -7,28 +7,30 @@ with open('Resources/election_data.csv') as election_csv:
     votes_each = {}
     candidates = []
     
+    # skip header row
     next(csvreader)
-    #---------------------Getting vote total; vote per candidate-----------
-    for row in csvreader:
 
+    for row in csvreader:
+        # appends unique candidate names to list 'candidates' and starts vote count for dictionary 'votes_each'
+        # for each instance of a given candidate, adds 1 to corresponding dict value
         if row[2] not in candidates:
             candidates.append(row[2])
             votes_each[row[2]] = 1
 
         votes_each[row[2]] += 1
 
-    total = sum(votes_each.values())
+    total_votes = sum(votes_each.values())
 
-    #----------------------------Getting vote percentage-------------------
+
+    # calculates percentage of votes each candidate received
     percent = []
 
     for key in votes_each:
-        temp = votes_each[key]/total*100
-        percent.append(round(temp, 3))
+        temp_var = votes_each[key] / total_votes * 100
+        percent.append(round(temp_var, 3))
+
     
-    #---------------------------WinnerWinnterChickenDinner------------------
-
-
+    # calculates winner of election. The for loop will successively store the highest number of votes as var winner0 until resolved
     winner0 = 0
     winner1 = ""
     
@@ -55,7 +57,7 @@ with open('Resources/election_data.csv') as election_csv:
 
     """)
 
-file = open('election_file.txt', 'w')
+file = open('Output/election_file.txt', 'w')
 
 file.write(f'    Election Results\n')
 file.write(f'-------------------------\n')
